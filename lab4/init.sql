@@ -8,7 +8,7 @@ use lab;
 
 create table Store
 (
-    id       int,
+    id       int auto_increment,
     name     varchar(127) not null,
     address  varchar(255) not null,
     contacts varchar(255) not null,
@@ -17,7 +17,7 @@ create table Store
 
 create table Manufacturer
 (
-    id       int,
+    id       int auto_increment,
     name     varchar(128) not null,
     contacts varchar(255) not null,
     primary key (id)
@@ -25,7 +25,7 @@ create table Manufacturer
 
 create table Component
 (
-    id              int,
+    id              int auto_increment,
     type            varchar(127) not null,
     model           varchar(127) not null,
     manufacturer_id int,
@@ -35,7 +35,7 @@ create table Component
 
 create table Model
 (
-    id     int,
+    id     int auto_increment,
     name   varchar(255)   not null,
     price  decimal(10, 2) not null,
     rating int,
@@ -44,7 +44,7 @@ create table Model
 
 create table Supplier
 (
-    id       int,
+    id       int auto_increment,
     name     varchar(128) not null,
     contacts varchar(255) not null,
     primary key (id)
@@ -52,7 +52,7 @@ create table Supplier
 
 create table Ordering
 (
-    id           int,
+    id           int auto_increment,
     model_id     int           not null,
     store_id     int           not null,
     price        double(10, 2) not null,
@@ -66,7 +66,7 @@ create table Ordering
 
 create table Delivery
 (
-    id          int,
+    id          int auto_increment,
     ordering    int  not null,
     departure   date not null,
     receipt     date not null,
