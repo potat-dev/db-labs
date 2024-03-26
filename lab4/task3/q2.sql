@@ -1,13 +1,9 @@
 -- Найти магазины, в которых средняя цена компьютера ниже, чем в других.
 
-SELECT s.id, s.name
-FROM Store s
-WHERE (
-    SELECT AVG(m.price)
-    FROM Model m
-    JOIN ModelsInShop ms ON m.id = ms.model_id
-    WHERE ms.store_id = s.id
-) < (
-    SELECT AVG(m.price)
-    FROM Model m
-);
+select s.id, s.name
+from Store s
+where (select avg(m.price)
+       from Model m
+                join ModelsInShop ms on m.id = ms.model_id
+       where ms.store_id = s.id) < (select avg(m.price)
+                                    from Model m);

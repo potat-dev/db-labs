@@ -1,7 +1,7 @@
 -- Найти количество моделей, продаваемых в каждом из магазинов.
 
-SELECT Store.id AS store_id, Store.name AS store_name, COUNT(Model.id) AS model_count
-FROM Store
-JOIN ModelsInShop ON Store.id = ModelsInShop.store_id
-JOIN Model ON ModelsInShop.model_id = Model.id
-GROUP BY Store.id, Store.name;
+select Store.id as store_id, Store.name as store_name, count(Model.id) as model_count
+from Store
+         join ModelsInShop on Store.id = ModelsInShop.store_id
+         join Model on ModelsInShop.model_id = Model.id
+group by Store.id, Store.name;

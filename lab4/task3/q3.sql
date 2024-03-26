@@ -1,24 +1,20 @@
 -- Найти магазины, в которых продается наибольшее количество моделей
 
-SELECT s.id, s.name, COUNT(mis.model_id) AS model_count
-FROM Store s
-JOIN ModelsInShop mis ON s.id = mis.store_id
-GROUP BY s.id, s.name
-ORDER BY model_count DESC
-LIMIT 1;
+select s.id, s.name, count(mis.model_id) as model_count
+from Store s
+         join ModelsInShop mis on s.id = mis.store_id
+group by s.id, s.name
+order by model_count desc
+limit 1;
 
 -- Более правильный способ
 
-WITH ModelCounts AS (
-    SELECT store_id, COUNT(model_id) AS model_count
-    FROM ModelsInShop
-    GROUP BY store_id
-),
-MaxModelCount AS (
-    SELECT MAX(model_count) AS max_count
-    FROM ModelCounts
-)
-SELECT s.id, s.name, mc.model_count
-FROM Store s
-JOIN ModelCounts mc ON s.id = mc.store_id
-JOIN MaxModelCount mmc ON mc.model_count = mmc.max_count;
+with ModelCounts as (select store_id, count(model_id) as model_count
+                     from ModelsInShop
+                     group by store_id),
+     MaxModelCount as (select max(model_count) as max_count
+                       from ModelCounts)
+select s.id, s.name, mc.model_count
+from Store s
+         join ModelCounts mc on s.id = mc.store_id
+         join MaxModelCount mmc on mc.model_count = mmc.max_count;

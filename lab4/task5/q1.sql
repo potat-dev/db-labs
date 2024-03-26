@@ -1,7 +1,7 @@
 -- Найти модели компьютеров, имеющие накопители DVD
 
-SELECT Model.name
-FROM Model
-JOIN ModelComponents ON Model.id = ModelComponents.model_id
-JOIN Component ON ModelComponents.component_id = Component.id
-WHERE Component.type = 'DVD';
+select Model.name
+from Model
+         join ModelComponents on Model.id = ModelComponents.model_id
+         join Component on ModelComponents.component_id = Component.id
+where Component.type = 'DVD';

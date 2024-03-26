@@ -1,15 +1,12 @@
 -- Найти модели компьютеров, укомплектованные всеми типами периферийных устройств
 
-SELECT m.name
-FROM Model m
-WHERE NOT EXISTS (
-    SELECT type
-    FROM Component
-    WHERE type IN ('Видеокарта', 'Оперативная память', 'SSD', 'HDD', 'Монитор', 'Клавиатура', 'Мышь', 'Накопитель DVD', 'Кулер')
-    AND type NOT IN (
-        SELECT c.type
-        FROM ModelComponents mc
-        JOIN Component c ON mc.component_id = c.id
-        WHERE mc.model_id = m.id
-    )
-);
+select m.name
+from Model m
+where not exists (select type
+                  from Component
+                  where type in ('Видеокарта', 'Оперативная память', 'SSD', 'HDD', 'Монитор', 'Клавиатура', 'Мышь',
+                                 'Накопитель DVD', 'Кулер')
+                    and type not in (select c.type
+                                     from ModelComponents mc
+                                              join Component c on mc.component_id = c.id
+                                     where mc.model_id = m.id));
