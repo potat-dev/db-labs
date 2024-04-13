@@ -12,3 +12,5 @@ begin
 end;
 
 call DeleteModelWithOrders(1);
+
+call DeleteModelWithOrders(666);
