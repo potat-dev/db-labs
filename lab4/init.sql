@@ -120,3 +120,23 @@ create table DeletionLog
     deletionTime timestamp default current_timestamp,
     primary key (id)
 );
+
+create table ModelSales
+(
+    model_id    int primary key,
+    total_sales decimal(10, 2) not null,
+    foreign key (model_id) references Model (id)
+);
+
+create table OrderingHistory
+(
+    id             int,
+    model_id       int,
+    store_id       int,
+    price          double(10, 2),
+    person         varchar(255),
+    address        varchar(255),
+    registration   date,
+    operation      varchar(10),
+    operation_time timestamp
+);

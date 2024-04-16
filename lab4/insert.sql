@@ -245,3 +245,9 @@ values (9, 1, '2024-03-01', '2024-03-02', 5),
 
 insert into Component (id, type, model, manufacturer_id)
 values (30, 'Блок питания', 'SuperPower 500W', 7);
+
+-- Заполняем таблицу начальными данными
+insert into ModelSales (model_id, total_sales)
+select model_id, sum(price)
+from Ordering
+group by model_id;
