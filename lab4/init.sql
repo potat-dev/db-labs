@@ -93,3 +93,30 @@ create table ModelComponents
     foreign key (model_id) references Model (id) on delete cascade on update cascade,
     foreign key (component_id) references Component (id) on delete cascade on update cascade
 );
+
+-- Новые таблицы для лабы 6
+
+create table DeletedComponents
+(
+    id           int auto_increment,
+    component_id int,
+    deleted_at   timestamp default current_timestamp,
+    primary key (id)
+);
+
+create table ModelUpdateLog
+(
+    model_id    int            not null,
+    old_price   decimal(10, 2) not null,
+    new_price   decimal(10, 2) not null,
+    update_time varchar(255)   not null
+);
+
+create table DeletionLog
+(
+    id           int auto_increment,
+    tableName    varchar(128) not null,
+    deletedId    int          not null,
+    deletionTime timestamp default current_timestamp,
+    primary key (id)
+);

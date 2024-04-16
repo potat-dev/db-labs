@@ -166,37 +166,30 @@ values (1, 1),
 
 -- Новые данные, для Лабы 4
 
--- Добавляем новую модель в таблицу Model
 insert into Model (id, name, price, rating)
 values (9, 'Super Gaming PC Limited Edition', 150000, 5);
--- Замените 'Новая модель' на имя новой модели и установите соответствующую цену и рейтинг
 
 -- Добавляем SSD и HDD в таблицу ModelComponents
 insert into ModelComponents (model_id, component_id)
-values (9, 13), -- Замените 13 на id SSD, который вы хотите добавить
+values (9, 13),
        (9, 15);
--- Замените 15 на id HDD, который вы хотите добавить
 
--- Добавляем новый компонент без производителя в таблицу Component
+-- Добавляем новый компонент без производителя
 insert into Component (id, type, model, manufacturer_id)
 values (27, 'Кулер', 'CoolMaster 5000', null);
 
--- Добавляем новый компонент в сборку Super Gaming PC
 insert into ModelComponents (model_id, component_id)
 values (9, 27);
 
--- Добавляем новые компоненты DVD без производителя в таблицу Component
+-- Добавляем новые компоненты DVD без производителя
 insert into Component (id, type, model, manufacturer_id)
 values (28, 'DVD', 'DVD-RW Pro', null),
        (29, 'DVD', 'DVD-ROM Ultra', null);
 
--- Добавляем новые компоненты DVD в сборки PC
 insert into ModelComponents (model_id, component_id)
-values (1, 28), -- Добавляем DVD-RW Pro в сборку Asus ROG Strix G15
+values (1, 28),
        (2, 29);
--- Добавляем DVD-ROM Ultra в сборку Lenovo IdeaPad 330
 
--- Добавляем новый магазин в таблицу Store
 insert into Store (id, name, address, contacts)
 values (5, 'ТехноПланета', 'ул. Космическая, 1', '+7 (495) 567-89-01');
 
@@ -209,7 +202,6 @@ values (5, 2),
        (5, 8),
        (5, 9);
 
--- Добавляем новую модель в таблицу Model
 insert into Model (id, name, price, rating)
 values (10, 'Ultra Gaming PC Rare Gold Edition', 200000, 5);
 
@@ -224,10 +216,8 @@ values (10, 1),  -- Процессор
        (10, 21), -- Клавиатура
        (10, 23), -- Мышь
        (10, 25), -- Накопитель DVD
-       (10, 27);
--- Кулер
+       (10, 27); -- Кулер
 
--- Добавляем новый магазин в таблицу Store
 insert into Store (id, name, address, contacts)
 values (6, 'Super Rare Store', 'ул. Неизвестная, 1', '+7 (499) 999-89-89');
 
@@ -250,3 +240,8 @@ values (9, 1, '2024-03-01', '2024-03-02', 5),
        (14, 6, '2024-03-06', '2024-03-07', 6),
        (15, 7, '2024-03-07', '2024-03-08', 6),
        (16, 8, '2024-03-08', '2024-03-09', 6);
+
+-- Тестовые данные для лабы 6
+
+insert into Component (id, type, model, manufacturer_id)
+values (30, 'Блок питания', 'SuperPower 500W', 7);
